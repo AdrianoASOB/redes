@@ -46,11 +46,30 @@ final class HttpRequest implements Runnable{
 	}
 	private void processRequest() throws Exception{
 		// Obter uma referência para os trechos de entrada e saída do socket.
-		InputStream is = ;
-		DataOutputStream os = ;
+		InputStream is = socket.getInputStream();
+		DataOutputStream saiDilma = new DataOutputStream(socket.getOutputStream());
 		// Ajustar os filtros do trecho de entrada.
-		?
-		BufferedReader br = ?;
+		BufferedReader br = 
+	              new BufferedReader(new
+	              InputStreamReader(is)); 
+		
+		// Obter a linha de requisição da mensagem de requisição HTTP.
+		String linha = br.readLine();
+		//  Exibir a linha de requisição.
+		System.out.println();
+		System.out.println(linha);
+
+		// Obter e exibir as linhas de cabeçalho.
+		String headerLine = null;
+		while ((headerLine = br.readLine()).length() != 0) {
+			System.out.println(headerLine);
+		}
+
+		saiDilma.close();
+		br.close();
+		socket.close();
+
+	
 	}
 
 	
