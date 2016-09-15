@@ -88,12 +88,21 @@ final class HttpRequest implements Runnable{
 		String contentTypeLine = null;
 		String entityBody = null;
 		if (fileExists) {
+<<<<<<< HEAD
 			statusLine = "HTTP/1.1 200 OK" + CRLF;
 			contentTypeLine = "Content-Type:" + 
 			contentType(fileName) + CRLF;
 		} else {
 			statusLine = "HTTP/1.1 404 Not Found" + CRLF;
 			contentTypeLine = "Content-Type:" + 
+=======
+			statusLine = CRLF;
+			contentTypeLine = "Content-type: " + 
+			contentType(fileName) + CRLF;
+		} else {
+			statusLine = "404 Not Found ";
+			contentTypeLine = "Content-type: " + 
+>>>>>>> b6cb61e242c50d7506e8eba076420248fee7cb3a
 					contentType(fileName) + CRLF;
 			entityBody = "<HTML>" +
 				"<HEAD><TITTLE>Not Found</TITTLE></HEAD>" +
@@ -140,10 +149,17 @@ final class HttpRequest implements Runnable{
 		if(fileName.endsWith(".htm") || fileName.endsWith(".html")) {
 			return "text/html";
 		}
+<<<<<<< HEAD
 		if(fileName.endsWith(".gif") || fileName.endsWith(".GIF")) {
 			return "image/gif";
 		}
 		if(fileName.endsWith(".jpg") || fileName.endsWith(".JPG")) {
+=======
+		if(fileName.endsWith(".gif")) {
+			return "image/gif";
+		}
+		if(fileName.endsWith(".jpg")) {
+>>>>>>> b6cb61e242c50d7506e8eba076420248fee7cb3a
 			return "image/jpeg";
 		}
 		return "application/octet-stream";
